@@ -27,7 +27,7 @@ const Navbar = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-  console.log({path});
+  // console.log({path});
   return (
     <div className={`my-4 ${path === "/about"? "fixed w-full z-20 top-0": ""}`}>
       <div className="flex justify-between items-center max-w-[1100px] w-11/12 mx-auto bg-white p-2.5  border border-gray-200 rounded-full shadow-lg">
