@@ -1,11 +1,13 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { RxHamburgerMenu } from "react-icons/rx";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+  const path = usePathname()
   const routes = [
     { name: "Home", path: "/" },
     { name: "About", path: "/about" },
@@ -25,8 +27,9 @@ const Navbar = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+  console.log({path});
   return (
-    <div className="my-4">
+    <div className={`my-4 ${path === "/about"? "fixed w-full z-20 top-0": ""}`}>
       <div className="flex justify-between items-center max-w-[1100px] w-11/12 mx-auto bg-white p-2.5  border border-gray-200 rounded-full shadow-lg">
         <div className="lg:ml-5 flex items-center gap-2 relative">
           <RxHamburgerMenu
@@ -47,7 +50,7 @@ const Navbar = () => {
               ))}
             </ul>
           )}
-          <h3 className="text-3xl font-semibold text-violet-700  ">devmeet</h3>
+          <h3 className="text-3xl font-semibold text-violet-700  ">Devmeet</h3>
         </div>
         <ul className="lg:flex items-center gap-4 hidden ">
           {routes.map((route) => (
