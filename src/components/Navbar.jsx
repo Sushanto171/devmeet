@@ -29,8 +29,8 @@ const Navbar = () => {
   }, []);
   // console.log({path});
   return (
-    <div className={`my-4 ${path === "/about"? "fixed w-full z-20 top-0": ""}`}>
-      <div className={`flex justify-between items-center max-w-[1100px] w-11/12 mx-auto ${path=== "/about"? "backdrop-blur-xl border-gray-200/35":"bg-white border-gray-200"}  p-2.5  border  rounded-full shadow-lg`}>
+    <div className={`my-4 ${path === "/about" ? "fixed w-full z-20 top-0" : ""}`}>
+      <div className={`flex justify-between items-center max-w-[1100px] w-11/12 mx-auto ${path === "/about" ? "backdrop-blur-xl border-gray-200/35" : "bg-white border-gray-200"}  p-2.5  border  rounded-full shadow-lg`}>
         <div className="lg:ml-5 flex items-center gap-2 relative">
           <RxHamburgerMenu
             onClick={() => setOpen(!open)}
@@ -62,7 +62,7 @@ const Navbar = () => {
           ))}
         </ul>
         <Link href="signIn">
-          <button className={`border py-1 px-3 font-semibold rounded-full cursor-pointer ${path==="/about"? "border-gray-200/35": "border-gray-200"}  `}>
+          <button className={`border py-1 px-3 font-semibold rounded-full cursor-pointer ${path === "/about" ? "border-gray-200/35" : "border-gray-200"}  `}>
             Sign in
           </button>
         </Link>
