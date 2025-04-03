@@ -1,7 +1,35 @@
 import Container from "@/components/Container";
 import { Layout, Shield, Users } from "lucide-react";
-import aboutImage from "./about-hero.png";
 import Image from "next/image";
+import aboutImage from "./about-hero.png";
+import missionImage from "./our-mission.png";
+
+const contributors = [
+  {
+    _id: 1,
+    name: "Sushanto kumar",
+    image: "https://avatars.githubusercontent.com/u/174892222?s=96&v=4",
+    role: "Team Lead, Backend Developer, Frontend Developer",
+  },
+  {
+    _id: 2,
+    name: "Md Reaz Morshed",
+    image: "https://avatars.githubusercontent.com/u/72806329?v=4",
+    role: "Backend Developer, Frontend Developer",
+  },
+  {
+    _id: 3,
+    name: "Rakib Hossen",
+    image: "https://avatars.githubusercontent.com/u/174198382?v=4",
+    role: "Backend Developer, Frontend Developer",
+  },
+  {
+    _id: 4,
+    name: "Miftahul Jannat",
+    image: "https://avatars.githubusercontent.com/u/112188695?v=4",
+    role: "Backend Developer, Frontend Developer",
+  },
+];
 
 export default function About() {
   return (
@@ -14,7 +42,7 @@ export default function About() {
         >
           {/* Hero Background Image */}
         </div>
-        <div className="relative z-10 text-center py-20 sm:py-32 lg:py-44">
+        <div className="relative z-10 text-center px-3 py-20 sm:py-32 lg:py-44">
           <h1 className="text-4xl font-bold text-white mb-4">About DevMeet</h1>
           <p className="text-lg text-white">
             Empowering Developers Through Knowledge Sharing
@@ -26,7 +54,7 @@ export default function About() {
       <Container>
         <div className="mt-12 grid md:grid-cols-2 gap-8 items-center">
           <div>
-            <h2 className="text-2xl font-semibold text-primary">Our Mission</h2>
+            <h2 className="text-3xl font-semibold text-primary">Our Mission</h2>
             <p className="mt-4 text-gray-700">
               DevMeet is designed to be a knowledge-sharing hub where developers
               can collaborate, discuss, and learn from each other. We aim to
@@ -35,13 +63,18 @@ export default function About() {
             </p>
           </div>
           <div>
-            <Image src={aboutImage} alt="Our Mission" width={500} height={300} />
+            <Image
+              src={missionImage}
+              alt="Our Mission"
+              width={500}
+              height={300}
+            />
           </div>
         </div>
 
         {/* Features Section */}
         <div className="mt-16">
-          <h2 className="text-2xl font-semibold text-primary text-center">
+          <h2 className="text-3xl font-semibold text-primary text-center">
             Key Features
           </h2>
           <div className="mt-8 grid md:grid-cols-3 gap-6">
@@ -69,50 +102,30 @@ export default function About() {
           </div>
         </div>
 
-         {/* Contributors Section */}
-         <div className="mt-16">
-          <h2 className="text-2xl font-semibold text-primary text-center">
+        {/* Contributors Section */}
+        <div className="mt-16">
+          <h2 className="text-3xl font-semibold text-primary text-center">
             Our Contributors
           </h2>
-          <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-6">
-            <div className="bg-white shadow-md rounded-lg p-6 text-center">
-            <Image
-                src={aboutImage}
-                alt="Contributor 3"
-                className="mx-auto h-24 w-24 rounded-full object-cover mb-4"
-              />
-              <h3 className="text-xl font-semibold">John Doe</h3>
-              <p className="text-gray-600">Lead Developer</p>
-            </div>
-            <div className="bg-white shadow-md rounded-lg p-6 text-center">
-            <Image
-                src={aboutImage}
-                alt="Contributor 3"
-                className="mx-auto h-24 w-24 rounded-full object-cover mb-4"
-              />
-              <h3 className="text-xl font-semibold">John Doe</h3>
-              <p className="text-gray-600">Lead Developer</p>
-            </div>
-            <div className="bg-white shadow-md rounded-lg p-6 text-center">
-            <Image
-                src={aboutImage}
-                alt="Contributor 3"
-                className="mx-auto h-24 w-24 rounded-full object-cover mb-4"
-              />
-              <h3 className="text-xl font-semibold">Jane Smith</h3>
-              <p className="text-gray-600">UI/UX Designer</p>
-            </div>
-            <div className="bg-white shadow-md rounded-lg p-6 text-center">
-              <Image
-                src={aboutImage}
-                alt="Contributor 3"
-                className="mx-auto h-24 w-24 rounded-full object-cover mb-4"
-              />
-              <h3 className="text-xl font-semibold">Alice Johnson</h3>
-              <p className="text-gray-600">Backend Developer</p>
-            </div>
+          <div className="mt-8 grid sm:grid-cols-2 md:grid-cols-4 gap-6">
+            {contributors.map((contributor) => (
+              <div
+                key={contributor._id}
+                className="bg-white shadow-md rounded-lg p-6 text-center"
+              >
+                <Image
+                  src={contributor.image}
+                  alt={`${contributor.name}'s Photo`}
+                  width={96}
+                  height={96}
+                  className="mx-auto rounded-full object-cover hover:scale-125 duration-200 mb-4"
+                />
+                <h3 className="text-xl font-semibold">{contributor.name}</h3>
+                <p className="text-gray-600">{contributor.role}</p>
+              </div>
+            ))}
           </div>
-          </div>
+        </div>
       </Container>
     </div>
   );
