@@ -8,8 +8,8 @@ const Footer = () => {
     <div className="w-11/12 mx-auto border-t border-gray-200 pt-7">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5  lg:grid-cols-4 mb-4">
         <div className="">
-          <h3 className="text-3xl font-semibold text-violet-700 mb-3 ">
-            Devmeet
+          <h3 className="text-3xl font-semibold text-primary mb-3 ">
+            Dev<span className="font-bold text-black">meet</span>
           </h3>
           <p className="text-sm text-gray-700">
             DevMeet is a platform where developers can share knowledge through
