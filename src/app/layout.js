@@ -35,6 +35,6 @@ export default function RootLayout({ children }) {
         <div className="min-h-[400px]">{children}</div>
         <Footer></Footer>
       </body>
-    </html>
+    </html> 
   );
 }
