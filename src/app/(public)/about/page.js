@@ -31,7 +31,14 @@ const contributors = [
   },
 ];
 
+export const metadata = {
+  title: 'About | DevMeet',
+  description: 'Learn more about DevMeet - a platform for developers to collaborate, share knowledge, and grow together.',
+};
+
+
 export default function About() {
+  
   return (
     <div className="min-h-screen text-gray-900 mb-12">
       {/* Hero Section with Background Image */}
