@@ -1,7 +1,8 @@
-import Banner from "@/components/Banner";
 import Container from "@/components/Container";
-import QuestionCard from "@/components/QuestionCard";
-import Statistics from "@/components/Statistics";
+import Banner from "@/components/Home/Banner";
+import QuestionCard from "@/components/Home/QuestionCard";
+import Statistics from "@/components/Home/Statistics";
+
 
 export default function Home() {
     return (

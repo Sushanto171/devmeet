@@ -50,7 +50,8 @@ const Navbar = () => {
               ))}
             </ul>
           )}
-          <h3 className="text-3xl font-semibold text-violet-700  ">Devmeet</h3>
+          <h3 className="text-3xl font-semibold text-primary">
+            Dev<span className="font-bold text-black">meet</span></h3>
         </div>
         <ul className="lg:flex items-center gap-4 hidden ">
           {routes.map((route) => (
