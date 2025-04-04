@@ -1,6 +1,6 @@
 const QuestionCard = ({ user, date, category, title, description, tags, likes, comments, views }) => {
     return (
-        <div className="bg-white p-6 rounded-lg shadow-md mb-4">
+        <div className="p-6 rounded-lg shadow-md mb-4 border-l-2 border-orange-500">
             <div className="flex items-center space-x-2">
                 <span className="font-bold text-pink-500">{user}</span>
                 <span className="bg-blue-500 text-white px-2 py-1 text-xs rounded">Enlightened</span>
@@ -20,7 +20,7 @@ const QuestionCard = ({ user, date, category, title, description, tags, likes, c
                     <span>💬 {comments}</span>
                     <span>👀 {views} Views</span>
                 </div>
-                <button className="bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800">Vote</button>
+                <button className="bg-black text-white px-4 py-2 rounded hover:bg-gray-800">Vote</button>
             </div>
         </div>
     );
