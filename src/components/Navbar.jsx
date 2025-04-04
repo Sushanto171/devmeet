@@ -15,8 +15,8 @@ const Navbar = () => {
     { name: "Service", path: "/service" },
     { name: "Community", path: "/community" },
   ];
-  useEffect(() => {
-    const handleResize = () => {
+  useEffect(() => { 
+    const handleResize = () => { 
       if (window.innerWidth >= 1024) {
         setOpen(false);
       }
