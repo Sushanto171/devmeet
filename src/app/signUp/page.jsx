@@ -80,7 +80,7 @@ const Page = () => {
         <p className="text-sm mt-5 text-center">
           {"Already have an account?"}
           <Link href="/signIn" className="text-violet-700">
-            SignIn
+            Sign-In
           </Link>
         </p>
       </div>

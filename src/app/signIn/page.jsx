@@ -60,7 +60,7 @@ const page = () => {
         <p className="text-sm mt-5 text-center">
           {"Don't have an account?"}
           <Link href="/signUp" className="text-violet-700">
-            Create Account
+            Create an Account
           </Link>
         </p>
       </div>
