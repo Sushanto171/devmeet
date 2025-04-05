@@ -2,34 +2,33 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { FiUpload } from "react-icons/fi";
-
-const Page = () => {
+import { FaGithub } from "react-icons/fa6";
+import { FcGoogle } from "react-icons/fc";
+const page = () => {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
       <div className="w-11/12 mx-auto max-w-[400px] bg-white p-6 rounded-2xl border">
         <div className="mb-4 flex flex-col items-center justify-center">
-          <div className="flex items-center gap-2  mb-4">
+          <div className="flex items-center gap-2  mb-3">
             <h3 className="text-2xl font-semibold text-violet-700  ">
               DevMeet
             </h3>
           </div>
-          <p className="text-gray-700 text-center">
-            Create your free account and start sharing knowledge.
-          </p>
+          <p className="text-gray-700">Welcome back to DevMeet!</p>
         </div>
+        <div className="rounded-full border flex gap-2 items-center justify-center p-2 cursor-pointer mb-3">
+          <FcGoogle /> Google
+        </div>
+        <div className="rounded-full border flex gap-2 items-center justify-center p-2 cursor-pointer mb-2">
+          <FaGithub className="text-gray-900" /> Github
+        </div>
+        <div className="flex items-center gap-4">
+          <hr className="flex-grow border-t border-gray-300" />
+          <p className="text-gray-500">OR</p>
+          <hr className="flex-grow border-t border-gray-300" />
+        </div>
+
         <form>
-          <div className="mb-4">
-            <Label htmlFor="name" className=" mb-2">
-              Full name
-            </Label>
-            <Input
-              type="text"
-              className="rounded-full p-5"
-              id="name"
-              placeholder="Name"
-            />
-          </div>
           <div className="mb-4">
             <Label htmlFor="email" className=" mb-2">
               Email
@@ -52,35 +51,16 @@ const Page = () => {
               placeholder="Password"
             />
           </div>
-          <div className="mb-4">
-            <Label htmlFor="image" className="mb-2">
-              Profile picture
-            </Label>
-            <label
-              htmlFor="image"
-              className="rounded-full border flex gap-2 items-center justify-center p-2 cursor-pointer"
-            >
-              <FiUpload />
-              <p className="text-sm text-gray-600">Upload an image</p>
-            </label>
-            <Input
-              type="file"
-              className="hidden"
-              id="image"
-              accept="image/*"
-              placeholder="Image"
-            />
-          </div>
 
           <Button className="w-full rounded-full py-5 bg-violet-700 hover:bg-violet-800 cursor-pointer">
-            Create an Account
+            Sign In
           </Button>
         </form>
 
         <p className="text-sm mt-5 text-center">
-          {"Already have an account?"}
-          <Link href="/signIn" className="text-violet-700">
-            Sign-In
+          {"Don't have an account?"}
+          <Link href="/signUp" className="text-violet-700">
+            Create an Account
           </Link>
         </p>
       </div>
@@ -88,4 +68,4 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default page;
