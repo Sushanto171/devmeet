@@ -1,7 +1,11 @@
-
 import Image from "next/image";
 import Link from "next/link";
 import errorImage from "./error.png";
+import ErrorPath from "@/components/not-found/ErrorPath";
+
+export const metadata = {
+  title: "Page Not Found | DevMeet",
+};
 
 export default function Error() {
   return (
@@ -10,8 +14,8 @@ export default function Error() {
         <Image src={errorImage} width={100} height={100} alt="Error image" />
         <div className="w-1 bg-black h-36"></div>
         <div>
-          <h4 className="text-2xl font-semibold">Something went wrong!</h4>
-          <p className="text-gray-500 mt-2">{"Unknown error occurred."}</p>
+          <h4 className="text-2xl font-semibold">Page Not Found!</h4>
+         <ErrorPath />
           <Link href={"/"}>
             <button className="mt-4 bg-primary cursor-pointer text-white px-4 py-2 rounded">
               Go Back
