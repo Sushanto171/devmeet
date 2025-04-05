@@ -15,7 +15,7 @@ const Page = () => {
             </h3>
           </div>
           <p className="text-gray-700 text-center">
-            Create an account and start .
+            Create your free account and start sharing knowledge.
           </p>
         </div>
         <form>
@@ -80,7 +80,7 @@ const Page = () => {
         <p className="text-sm mt-5 text-center">
           {"Already have an account?"}
           <Link href="/signIn" className="text-violet-700">
-            SignIn
+            Sign-In
           </Link>
         </p>
       </div>
