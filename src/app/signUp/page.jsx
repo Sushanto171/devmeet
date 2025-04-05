@@ -15,7 +15,7 @@ const Page = () => {
             </h3>
           </div>
           <p className="text-gray-700 text-center">
-            Create an account and start .
+            Create your free account and start sharing knowledge.
           </p>
         </div>
         <form>

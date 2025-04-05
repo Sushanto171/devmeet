@@ -1,5 +1,9 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+
+body {
+  font-family: var(--font-inter);
+}
 /* 
 ---break--- */
 @custom-variant dark (&:is(.dark *));
