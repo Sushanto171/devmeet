@@ -10,8 +10,8 @@ const Page = () => {
       <div className="w-11/12 mx-auto max-w-[400px] bg-white p-6 rounded-2xl border">
         <div className="mb-4 flex flex-col items-center justify-center">
           <div className="flex items-center gap-2  mb-4">
-            <h3 className="text-2xl font-semibold text-violet-700  ">
-              DevMeet
+            <h3 className="text-3xl font-semibold text-primary">
+              Dev<span className="font-bold text-black">Meet</span>
             </h3>
           </div>
           <p className="text-gray-700 text-center">
@@ -72,14 +72,14 @@ const Page = () => {
             />
           </div>
 
-          <Button className="w-full rounded-full py-5 bg-violet-700 hover:bg-violet-800 cursor-pointer">
+          <Button className="w-full rounded-full py-5 bg-primary hover:bg-black cursor-pointer">
             Create an Account
           </Button>
         </form>
 
         <p className="text-sm mt-5 text-center">
           {"Already have an account?"}
-          <Link href="/signIn" className="text-violet-700">
+          <Link href="/signIn" className="text-primary">
             Sign-In
           </Link>
         </p>

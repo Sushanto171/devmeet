@@ -1,4 +1,3 @@
-
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import "@/styles/globals.css";
@@ -22,17 +21,26 @@ export const metadata = {
     { name: "Rakib Hossen" },
     { name: "Miftahul Jannat" },
   ],
-  keywords: ["React", "JavaScript", "Next.js", "Web Development", "Programming", "Developer Community"],
+  keywords: [
+    "React",
+    "JavaScript",
+    "Next.js",
+    "Web Development",
+    "Programming",
+    "Developer Community",
+  ],
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
         <Navbar></Navbar>
         <div className="min-h-[400px]">{children}</div>
         <Footer></Footer>
       </body>
-    </html> 
+    </html>
   );
 }
