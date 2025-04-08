@@ -1,25 +1,22 @@
 import Container from "@/components/Container";
 import Banner from "@/components/Home/Banner";
+import LeftContent from "@/components/Home/LeftContent";
 import QuestionCard from "@/components/Home/QuestionCard";
+import RightContent from "@/components/Home/RightContent";
 import Statistics from "@/components/Home/Statistics";
 
 
 export default function Home() {
     return (
         <Container>
-            <div className="mx-auto py-12 px-6 grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div className="md:col-span-2">
-                    <Banner />
-                </div>
+            <Banner />
 
-                <div className="md:col-span-1">
-                    <Statistics />
-                </div>
-
-                <div className="md:col-span-2">
-                    {/* <h2 className="text-xl font-semibold mb-4">
-                        Recent Questions
-                    </h2> */}
+            {/* main content */}
+            <main className="grid md:grid-cols-12 gap-6">
+                <aside className="col-span-3">
+                    <LeftContent />
+                </aside>
+                <section className="col-span-6">
                     <QuestionCard
                         user="Sophie Taylor"
                         date="January 4, 2023"
@@ -42,8 +39,11 @@ export default function Home() {
                         comments={2}
                         views={6000}
                     />
-                </div>
-            </div>
+                </section>
+                <aside className="col-span-3">
+                    <RightContent />
+                </aside>
+            </main>
         </Container>
     );
 }
