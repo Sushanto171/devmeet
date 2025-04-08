@@ -1,0 +1,1 @@
+export { GET, POST } from "@/lib/auth";   // Export GET and POST directly from auth.js

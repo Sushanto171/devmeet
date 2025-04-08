@@ -1,5 +1,6 @@
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
+import ThemeProvider from "@/providers/ThemeProvider";
 import "@/styles/globals.css";
 import { Geist, Geist_Mono } from "next/font/google";
 
@@ -22,7 +23,14 @@ export const metadata = {
     { name: "Rakib Hossen" },
     { name: "Miftahul Jannat" },
   ],
-  keywords: ["React", "JavaScript", "Next.js", "Web Development", "Programming", "Developer Community"],
+  keywords: [
+    "React",
+    "JavaScript",
+    "Next.js",
+    "Web Development",
+    "Programming",
+    "Developer Community",
+  ],
 };
 
 export default function RootLayout({ children }) {
@@ -31,10 +39,12 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <ThemeProvider>
         <Navbar></Navbar>
         <div className="min-h-[400px]">{children}</div>
         <Footer></Footer>
+        </ThemeProvider>
       </body>
-    </html> 
+    </html>
   );
 }
