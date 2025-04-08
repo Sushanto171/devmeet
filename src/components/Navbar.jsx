@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { RxHamburgerMenu } from "react-icons/rx";
+import ThemeToggle from "./ThemeToggle";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -76,6 +77,8 @@ const Navbar = () => {
               </li>
             ))}
           </ul>
+          <div className="flex  gap-2">
+          <ThemeToggle />
           <Link href="signIn">
             <button
               className={`border py-1 px-3 font-semibold rounded-full cursor-pointer ${
@@ -85,6 +88,7 @@ const Navbar = () => {
               Sign in
             </button>
           </Link>
+          </div>
         </div>
       </div>
     );
