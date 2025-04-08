@@ -4,6 +4,7 @@ import {
   HomeIcon,
   UsersIcon,
   FileTextIcon,
+  LayoutPanelTop,
   CodeIcon,
   FolderIcon,
   ShieldAlertIcon,
@@ -33,7 +34,7 @@ const data = {
     {
       title: "Dashboard",
       url: "/admin",
-      icon: HomeIcon,
+      icon: LayoutPanelTop,
     },
     {
       title: "Users",
@@ -97,6 +98,11 @@ const data = {
       title: "Settings",
       url: "/dashboard/settings",
       icon: SettingsIcon,
+    },
+    {
+      title: "Home",
+      url: "/",
+      icon: HomeIcon,
     },
   ],
 };
