@@ -12,6 +12,7 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
+
 export const metadata = {
   title: "DevMeet",
   description: "DevMeet - Developer Knowledge Sharing Hub",
