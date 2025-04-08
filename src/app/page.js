@@ -7,7 +7,7 @@ import Statistics from "@/components/Home/Statistics";
 export default function Home() {
     return (
         <Container>
-            <div className="mx-auto py-12 px-6 grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="mx-auto py-12 grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div className="md:col-span-2">
                     <Banner />
                 </div>

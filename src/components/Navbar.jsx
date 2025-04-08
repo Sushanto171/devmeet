@@ -12,9 +12,10 @@ const Navbar = () => {
   const routes = [
     { name: "Home", path: "/" },
     { name: "About", path: "/about" },
-    { name: "Job", path: "/job" },
     { name: "Service", path: "/service" },
     { name: "Dashboard", path: "/dashboard" },
+    { name: "Community", path: "/community" },
+    { name: "Job", path: "/job" },
   ];
   useEffect(() => {
     const handleResize = () => {
@@ -32,12 +33,12 @@ const Navbar = () => {
   if (!pathname.includes("dashboard")) {
     return (
       <div
-        className={`my-4 ${path === "/about" ? "fixed w-full z-20 top-0" : ""}`}
+        className={`my-4 ${path === "/about" ? "fixed w-full z-20 top-0 " : "sticky top-4"}`}
       >
         <div
           className={`flex justify-between items-center max-w-[1100px] w-11/12 mx-auto ${
             path === "/about"
-              ? "backdrop-blur-xl border-gray-200/35"
+              ? "bg-white border-gray-200/35 shadow-m"
               : "bg-white border-gray-200"
           }  p-2.5  border  rounded-full shadow-lg`}
         >
@@ -60,9 +61,11 @@ const Navbar = () => {
                 ))}
               </ul>
             )}
+            <Link href="/">
             <h3 className="text-3xl font-semibold text-primary">
               Dev<span className="font-bold text-black">meet</span>
             </h3>
+            </Link>
           </div>
           <ul className="lg:flex items-center gap-4 hidden ">
             {routes.map((route) => (
