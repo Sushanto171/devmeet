@@ -13,6 +13,7 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
+import Link from "next/link";
 const layout = ({ children }) => {
   return (
     <>
@@ -25,11 +26,13 @@ const layout = ({ children }) => {
             </div>
 
             <div className="flex items-center gap-3">
-              <img
-                className="w-12 h-12 rounded-full border"
-                src={"https://i.ibb.co.com/JWDd73K0/image.png"}
-                alt="profile"
-              />
+              <Link href="/dashboard/profile">
+                <img
+                  className="w-12 h-12 rounded-full border"
+                  src={"https://i.ibb.co.com/JWDd73K0/image.png"}
+                  alt="profile"
+                />
+              </Link>
               <div>
                 <p className="text-md mr-5">{"Admin Hossen"}</p>
                 <p className="text-sm mr-5">Admin</p>
