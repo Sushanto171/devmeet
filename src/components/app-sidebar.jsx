@@ -13,6 +13,7 @@ import {
   MegaphoneIcon,
   MessageCircleIcon,
   CalendarIcon,
+  User,
 } from "lucide-react";
 import {
   Sidebar,
@@ -33,7 +34,7 @@ const data = {
   navMain: [
     {
       title: "Dashboard",
-      url: "/admin",
+      url: "/dashboard",
       icon: LayoutPanelTop,
     },
     {
@@ -80,9 +81,9 @@ const data = {
       ],
     },
     {
-      title: "Events",
-      url: "/dashboard/events",
-      icon: CalendarIcon,
+      title: "Profile",
+      url: "/dashboard/profile",
+      icon: User,
     },
     {
       title: "Announcements",
