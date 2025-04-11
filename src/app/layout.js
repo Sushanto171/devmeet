@@ -35,15 +35,16 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
+
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <ThemeProvider>
         <Navbar></Navbar>
-        <div className="min-h-[400px]">{children}</div>
+        <div className="min-h-[400px]">{children}</div> 
         <Footer></Footer>
-        </ThemeProvider>
+        </ThemeProvider> 
       </body>
     </html>
   );
