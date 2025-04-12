@@ -1,60 +1,212 @@
-// import { AppSidebar } from "@/components/app-sidebar";
-// import {
-//   Breadcrumb,
-//   BreadcrumbItem,
-//   BreadcrumbLink,
-//   BreadcrumbList,
-//   BreadcrumbPage,
-//   BreadcrumbSeparator,
-// } from "@/components/ui/breadcrumb";
-// import { Separator } from "@/components/ui/separator";
-// import {
-//   SidebarInset,
-//   SidebarProvider,
-//   SidebarTrigger,
-// } from "@/components/ui/sidebar";
-
-// export default function Page() {
-//   return (
-//     <SidebarProvider>
-//       <AppSidebar />
-//       <SidebarInset>
-//         <header className="flex h-16 shrink-0 items-center gap-2 border-b">
-//           <div className="flex items-center gap-2 px-3">
-//             <SidebarTrigger />
-//             <Separator orientation="vertical" className="mr-2 h-4" />
-//             <Breadcrumb>
-//               <BreadcrumbList>
-//                 <BreadcrumbItem className="hidden md:block">
-//                   <BreadcrumbLink href="#">
-//                     Building Your Application
-//                   </BreadcrumbLink>
-//                 </BreadcrumbItem>
-//                 <BreadcrumbSeparator className="hidden md:block" />
-//                 <BreadcrumbItem>
-//                   <BreadcrumbPage>Data Fetching</BreadcrumbPage>
-//                 </BreadcrumbItem>
-//               </BreadcrumbList>
-//             </Breadcrumb>
-//           </div>
-//         </header>
-//         {/* <div className="flex flex-1 flex-col gap-4 p-4">
-//           <div className="grid auto-rows-min gap-4 md:grid-cols-3">
-//             <div className="bg-muted/50 aspect-video rounded-xl" />
-//             <div className="bg-muted/50 aspect-video rounded-xl" />
-//             <div className="bg-muted/50 aspect-video rounded-xl" />
-//           </div>
-//           <div className="bg-muted/50 min-h-[100vh] flex-1 rounded-xl md:min-h-min" />
-//         </div> */}
-//       </SidebarInset>
-//     </SidebarProvider>
-//   );
-// }
-
+import { Activity, BookOpen, Users } from "lucide-react";
+import Link from "next/link";
 import React from "react";
-
+import { MdChatBubble } from "react-icons/md";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import Chart from "./components/Chart";
 const page = () => {
-  return <div>This is dasborad page</div>;
+  return (
+    <div className="p-5">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 md:gap-0 gap-5">
+        <div className="bg-white p-6  border ">
+          <div className="flex justify-between">
+            <div className="space-y-2">
+              <p className="text-sm">Total Posts</p>
+
+              <h3 className="text-xl font-bold">300</h3>
+              <p className="text-sm text-gray-600 hover:underline">
+                <Link href="/">View all posts</Link>
+              </p>
+            </div>
+            <div className="bg-violet-700 flex flex-col justify-center items-center h-10 w-10 rounded-full">
+              <BookOpen className="text-white"></BookOpen>
+            </div>
+          </div>
+        </div>
+        <div className="bg-white p-6  border ">
+          <div className="flex justify-between">
+            <div className="space-y-2">
+              <p className="text-sm">Total Users</p>
+
+              <h3 className="text-xl font-bold">50</h3>
+              <p className="text-sm text-gray-600 hover:underline">
+                <Link href="/">View all user</Link>
+              </p>
+            </div>
+            <div className="bg-orange-500 flex flex-col justify-center items-center h-10 w-10 rounded-full">
+              <Users className="text-white"></Users>
+            </div>
+          </div>
+        </div>
+        <div className="bg-white p-6  border ">
+          <div className="flex justify-between">
+            <div className="space-y-2">
+              <p className="text-sm">Active Users</p>
+
+              <h3 className="text-xl font-bold">40</h3>
+              <p className="text-sm text-gray-600 hover:underline">
+                <Link href="/">View active users</Link>
+              </p>
+            </div>
+            <div className="bg-green-600 flex flex-col justify-center items-center h-10 w-10 rounded-full">
+              <Activity className="text-white"></Activity>
+            </div>
+          </div>
+        </div>
+        <div className="bg-white p-6  border ">
+          <div className="flex justify-between">
+            <div className="space-y-2">
+              <p className="text-sm">Total Comments</p>
+
+              <h3 className="text-xl font-bold">500</h3>
+              <p className="text-sm text-gray-600 hover:underline">
+                <Link href="/">View all comments</Link>
+              </p>
+            </div>
+            <div className="bg-fuchsia-600 flex flex-col justify-center items-center h-10 w-10 rounded-full">
+              <MdChatBubble className="text-white"></MdChatBubble>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="grid md:grid-cols-2 grid-cols-1 gap-5 mt-5">
+        <div className="border bg-white rounded-md p-5">
+          <Chart></Chart>
+        </div>
+        <div className=" border bg-white rounded-md p-5">
+          <h3 className="text-xl font-semibold">Recent Users</h3>
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead className="w-[100px]">User</TableHead>
+                <TableHead>Email</TableHead>
+                <TableHead>Role</TableHead>
+                <TableHead className="text-right">Join Date</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              <TableRow>
+                <TableCell className="font-medium">Reaz </TableCell>
+                <TableCell>reaz@gmail.com</TableCell>
+                <TableCell className="text-right">Developer</TableCell>
+                <TableCell>20 Feb 2025</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell className="font-medium">Reaz </TableCell>
+                <TableCell>reaz@gmail.com</TableCell>
+                <TableCell className="text-right">Developer</TableCell>
+                <TableCell>20 Feb 2025</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell className="font-medium">Miftahul </TableCell>
+                <TableCell>Miftahul@gmail.com</TableCell>
+                <TableCell className="text-right">Developer</TableCell>
+                <TableCell>20 Feb 2025</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell className="font-medium">Miftahul </TableCell>
+                <TableCell>Miftahul@gmail.com</TableCell>
+                <TableCell className="text-right">Developer</TableCell>
+                <TableCell>20 Feb 2025</TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+        </div>
+      </div>
+
+      <div className="mt-5 rounded-md border p-5 bg-white">
+        <h3 className="text-xl font-semibold mb-4">Pending Posts</h3>
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <TableHead className="w-[100px]">Image</TableHead>
+              <TableHead>Title</TableHead>
+              <TableHead>User Name</TableHead>
+              <TableHead>Date</TableHead>
+              <TableHead>Accept</TableHead>
+              <TableHead className="text-right">Delete</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            <TableRow>
+              <TableCell className="font-medium">
+                <img
+                  src="https://i.ibb.co.com/27nnnDKz/8.jpg"
+                  className="h-12 w-12 rounded-md"
+                  alt=""
+                />
+              </TableCell>
+              <TableCell> What five Marvel characters do....</TableCell>
+              <TableCell>Jhone Doie</TableCell>
+              <TableCell>Posted 20 june</TableCell>
+              <TableCell>
+                <button className="bg-green-500 text-green-100 text-sm px-4 py-1 rounded-full">
+                  Accept
+                </button>
+              </TableCell>
+              <TableCell className="text-right">
+                <button className="bg-red-500 text-red-100 text-sm px-4 py-1 rounded-full">
+                  Delete
+                </button>
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell className="font-medium">
+                <img
+                  src="https://i.ibb.co.com/27nnnDKz/8.jpg"
+                  className="h-12 w-12 rounded-md"
+                  alt=""
+                />
+              </TableCell>
+              <TableCell> What five Marvel characters do....</TableCell>
+              <TableCell>Jhone Doie</TableCell>
+              <TableCell>Posted 20 june</TableCell>
+              <TableCell>
+                <button className="bg-green-500 text-green-100 text-sm px-4 py-1 rounded-full">
+                  Accept
+                </button>
+              </TableCell>
+              <TableCell className="text-right">
+                <button className="bg-red-500 text-red-100 text-sm px-4 py-1 rounded-full">
+                  Delete
+                </button>
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell className="font-medium">
+                <img
+                  src="https://i.ibb.co.com/27nnnDKz/8.jpg"
+                  className="h-12 w-12 rounded-md"
+                  alt=""
+                />
+              </TableCell>
+              <TableCell> What five Marvel characters do....</TableCell>
+              <TableCell>Jhone Doie</TableCell>
+              <TableCell>Posted 20 june</TableCell>
+              <TableCell>
+                <button className="bg-green-500 text-green-100 text-sm px-4 py-1 rounded-full">
+                  Accept
+                </button>
+              </TableCell>
+              <TableCell className="text-right">
+                <button className="bg-red-500 text-red-100 text-sm px-4 py-1 rounded-full">
+                  Delete
+                </button>
+              </TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+      </div>
+    </div>
+  );
 };
 
 export default page;

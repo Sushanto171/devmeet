@@ -43,23 +43,9 @@ const data = {
       icon: UsersIcon,
     },
     {
-      title: "Content",
-      url: "#",
+      title: "Posts",
+      url: "/dashboard/allPost",
       icon: FileTextIcon,
-      items: [
-        {
-          title: "Articles",
-          url: "/dashboard/articles",
-        },
-        {
-          title: "Snippets",
-          url: "/admin/snippets",
-        },
-        {
-          title: "Projects",
-          url: "/dashboard/projects",
-        },
-      ],
     },
     {
       title: "Community",
