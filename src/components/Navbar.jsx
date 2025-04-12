@@ -71,7 +71,7 @@ const Navbar = () => {
           <ul className="lg:flex items-center gap-4 hidden ">
             {routes.map((route) => (
               <li key={route.path}>
-                <Link href={route.path} className="">
+                <Link href={route.path} className="text-gray-800">
                   {route.name}
                 </Link>
               </li>
@@ -81,7 +81,7 @@ const Navbar = () => {
           <ThemeToggle />
           <Link href="signIn">
             <button
-              className={`border py-1 px-3 font-semibold rounded-full cursor-pointer ${
+              className={`border py-1 text-gray-800 px-3 font-semibold rounded-full cursor-pointer ${
                 path === "/about" ? "border-gray-200/35" : "border-gray-200"
               }  `}
             >
