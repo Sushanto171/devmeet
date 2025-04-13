@@ -18,6 +18,7 @@ const Navbar = () => {
     { name: "Dashboard", path: "/dashboard" },
     { name: "Community", path: "/community" },
     { name: "Job", path: "/job" },
+    { name: "My Profile", path: "/profile" },
   ];
 
   useEffect(() => {
