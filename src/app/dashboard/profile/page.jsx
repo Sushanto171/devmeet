@@ -1,3 +1,5 @@
+"use client";
+import { useSession } from "next-auth/react";
 import { Button } from "@/components/ui/button";
 import { FaCode } from "react-icons/fa6";
 import { SlLocationPin } from "react-icons/sl";
@@ -22,31 +24,38 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-const page = () => {
+const Page = () => {
+  const { data: session } = useSession();
+
+  const userName = session?.user?.name || "John Doe";
+  const userEmail = session?.user?.email || "john.doe@example.com";
+  const userImage =
+    session?.user?.image || "https://i.ibb.co.com/JWDd73K0/image.png";
+
   return (
     <div className="p-5">
-      <div className="bg-white  rounded-md lg:h-[400px] h-fit">
+      <div className="bg-white rounded-md lg:h-[400px] h-fit">
         <div className="md:h-[250px] h-[200px] bg-gradient-to-r from-purple-500 to-violet-500 rounded-t-md"></div>
-        <div className="p-4 flex  md:flex-row flex-col items-center md:justify-between justify-center gap-1.5">
-          <div className="flex md:flex-row flex-col items-center md:gap-5  ">
+        <div className="p-4 flex md:flex-row flex-col items-center md:justify-between justify-center gap-1.5">
+          <div className="flex md:flex-row flex-col items-center md:gap-5">
             <img
-              className="w-28 h-28 rounded-md shadow-md border bg-white p-1.5 relative -top-10 "
-              src={"https://i.ibb.co.com/JWDd73K0/image.png"}
+              className="w-28 h-28 rounded-md shadow-md border bg-white p-1.5 relative -top-10"
+              src={userImage}
               alt="profile"
             />
             <div>
               <h3 className="text-2xl font-semibold pb-2 md:text-start text-center">
-                John Doe
+                {userName}
               </h3>
               <div className="flex md:flex-row flex-wrap md:justify-start justify-center items-center gap-4">
                 <p className="flex items-center gap-2 text-gray-600 text-md">
                   <FaCode /> Frontend developer
                 </p>
                 <p className="flex items-center gap-2 text-gray-600 text-md">
-                  <SlLocationPin /> Cumilla,Bangladesh
+                  <SlLocationPin /> Cumilla, Bangladesh
                 </p>
                 <p className="flex items-center gap-2 text-gray-600 text-md">
-                  <MdDateRange /> Joined june 2025
+                  <MdDateRange /> Joined June 2025
                 </p>
               </div>
             </div>
@@ -63,11 +72,10 @@ const page = () => {
           <div>
             <h2 className="text-xl font-bold mb-4 text-gray-800">About</h2>
             <div className="grid grid-cols-1 gap-y-3 text-gray-700">
-              <p className="flex  items-center gap-2">
+              <p className="flex items-center gap-2">
                 <FaUser /> <span>Full Name:</span>{" "}
-                <strong className="ml-auto">John Doe</strong>
+                <strong className="ml-auto">{userName}</strong>
               </p>
-
               <p className="flex items-center gap-2">
                 <MdOutlineWork /> <span>Role:</span>{" "}
                 <strong className="ml-auto">Developer</strong>
@@ -88,18 +96,16 @@ const page = () => {
             <h2 className="text-xl font-bold mb-4 text-gray-800">Contacts</h2>
             <div className="space-y-2 text-gray-700">
               <p className="flex items-center gap-2">
+                <FaEnvelope /> Email:{" "}
+                <span className="ml-auto font-medium">{userEmail}</span>
+              </p>
+              <p className="flex items-center gap-2">
                 <FaPhone /> Contact:{" "}
                 <span className="ml-auto font-medium">(123) 456-7890</span>
               </p>
               <p className="flex items-center gap-2">
                 <FaSkype /> Skype:{" "}
                 <span className="ml-auto font-medium">john.doe</span>
-              </p>
-              <p className="flex items-center gap-2">
-                <FaEnvelope /> Email:{" "}
-                <span className="ml-auto font-medium">
-                  john.doe@example.com
-                </span>
               </p>
             </div>
           </div>
@@ -123,9 +129,10 @@ const page = () => {
             </div>
           </div>
         </div>
+
+        {/* Posts Table - Keep this same as before */}
         <div className="lg:col-span-2 bg-white shadow-md p-6 space-y-6 rounded-md border">
           <h2 className="text-xl font-bold mb-4 text-gray-800">Post List</h2>
-
           <Table>
             <TableHeader>
               <TableRow>
@@ -137,42 +144,17 @@ const page = () => {
               </TableRow>
             </TableHeader>
             <TableBody>
+              {/* Add your dynamic rows here */}
               <TableRow>
                 <TableCell className="font-medium">
                   What five Marvel characters do..
                 </TableCell>
-                <TableCell>20 ikes</TableCell>
-                <TableCell>10 comment</TableCell>
-                <TableCell>100 views+</TableCell>
-                <TableCell className="text-right">1 fab 2025</TableCell>
+                <TableCell>20 likes</TableCell>
+                <TableCell>10 comments</TableCell>
+                <TableCell>100+ views</TableCell>
+                <TableCell className="text-right">1 Feb 2025</TableCell>
               </TableRow>
-              <TableRow>
-                <TableCell className="font-medium">
-                  What five Marvel characters do..
-                </TableCell>
-                <TableCell>20 ikes</TableCell>
-                <TableCell>10 comment</TableCell>
-                <TableCell>100 views+</TableCell>
-                <TableCell className="text-right">1 fab 2025</TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell className="font-medium">
-                  What five Marvel characters do..
-                </TableCell>
-                <TableCell>20 ikes</TableCell>
-                <TableCell>10 comment</TableCell>
-                <TableCell>100 views+</TableCell>
-                <TableCell className="text-right">1 fab 2025</TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell className="font-medium">
-                  What five Marvel characters do..
-                </TableCell>
-                <TableCell>20 ikes</TableCell>
-                <TableCell>10 comment</TableCell>
-                <TableCell>100 views+</TableCell>
-                <TableCell className="text-right">1 fab 2025</TableCell>
-              </TableRow>
+              {/* Repeat or map through actual post data if available */}
             </TableBody>
           </Table>
         </div>
@@ -181,4 +163,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
