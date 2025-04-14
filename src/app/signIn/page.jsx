@@ -93,6 +93,7 @@ const page = () => {
   <button type="submit" className="w-full rounded-full py-5 bg-primary hover:bg-black cursor-pointer text-white">
     Credential Login
   </button>
+  <div className="text-red-500">{error}</div>
 </form>
 
 
