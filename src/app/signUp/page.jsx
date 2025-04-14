@@ -1,4 +1,3 @@
-
 'use client'
 
 import { Input } from "@/components/ui/input";
@@ -6,7 +5,6 @@ import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { FiUpload } from "react-icons/fi";
-
 
 const Page = () => {
   return (
@@ -29,6 +27,7 @@ const Page = () => {
             </Label>
             <Input
               type="text"
+              name="name"
               className="rounded-full p-5"
               id="name"
               placeholder="Name"
@@ -40,6 +39,7 @@ const Page = () => {
             </Label>
             <Input
               type="email"
+              name="email"
               className="rounded-full p-5"
               id="email"
               placeholder="Email"
@@ -51,11 +51,14 @@ const Page = () => {
             </Label>
             <Input
               type="password"
+              name="password"
               className="rounded-full p-5"
-              id="email"
+              id="password"
               placeholder="Password"
             />
           </div>
+
+          {/*
           <div className="mb-4">
             <Label htmlFor="image" className="mb-2">
               Profile picture
@@ -71,10 +74,12 @@ const Page = () => {
               type="file"
               className="hidden"
               id="image"
+              name="image"
               accept="image/*"
               placeholder="Image"
             />
           </div>
+          */}
 
           <Button className="w-full rounded-full py-5 bg-primary hover:bg-black cursor-pointer">
             Create an Account
