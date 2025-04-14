@@ -104,16 +104,16 @@ const Navbar = () => {
                 </button>
               </>
             ) : (
-              <button
-                onClick={() => signIn()}
-                className={`border py-1 px-3 font-semibold text-gray-800 rounded-full cursor-pointer ${
-                  path === "/about"
-                    ? "border-gray-200/35"
-                    : "border-gray-200"
-                }`}
-              >
-                Sign in
-              </button>
+              <Link
+              href="/signIn"
+              className={`border py-1 px-3 font-semibold text-gray-800 rounded-full cursor-pointer ${
+                path === "/about" ? "border-gray-200/35" : "border-gray-200"
+              }`}
+            >
+              Sign in
+            </Link>
+            
+            
             )}
           </div>
         </div>
