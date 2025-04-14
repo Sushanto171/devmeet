@@ -106,22 +106,6 @@ const page = () => {
       </div>
 
 
-      <div>
-        <h1>testing email and passwords</h1>
-      a@email.com,
-      password: password
-
-      <br />
- 
-      b@email.com,
-      password: password
-
-      <br />
-  
-      c@email.com,
-      password: password
-
-      </div>
     </div>
   );
 };
