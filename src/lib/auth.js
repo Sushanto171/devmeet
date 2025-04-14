@@ -3,9 +3,9 @@ import GoogleProvider from "next-auth/providers/google";
 
 import CredentialsProvider from "next-auth/providers/credentials";
 
+import { getUserByEmail } from "@/queries/getUser";
+import bcrypt from 'bcryptjs';  // Ensure you're using bcryptjs for promises
 
-
-import { getUserByEmail } from "@/proxyData/users";
 
 export const {
     handlers: { GET, POST },
@@ -24,24 +24,25 @@ export const {
                 password: {},
             },
             async authorize(credentials) {
-                if (credentials === null) return null;
-                
+                if (!credentials) return null;
+            
                 try {
-                    const user = getUserByEmail(credentials?.email);
-                    console.log(user);
-                    if (user) {
-                        const isMatch = user?.password === credentials.password;
-
-                        if (isMatch) {
-                            return user;
-                        } else {
-                            throw new Error("Email or Password is not correct");
-                        }
-                    } else {
+                    const user = await getUserByEmail(credentials.email); // ✅ await here
+                    console.log('Fetched user:', user);
+            
+                    if (!user) {
                         throw new Error("User not found");
                     }
+            
+                    const isMatch =  bcrypt.compare(credentials.password, user.password); // ✅ hash comparison
+                    if (!isMatch) {
+                        throw new Error("Email or Password is not correct");
+                    }
+            
+                    return user;
                 } catch (error) {
-                    throw new Error(error);
+                    console.error("Auth error:", error);
+                    throw new Error("Authentication failed");
                 }
             },
         }),
@@ -58,7 +59,7 @@ export const {
             },
         }),
 
-// copied from auth documentation 
+
 
        
     ],

@@ -1,15 +1,24 @@
 import { NextResponse } from "next/server";
 //import { createUser } from "@/queries/users";
 
+import { createUser } from "@/queries/createUser";
+
 import bcrypt from "bcryptjs";
 
 
 //import {dbConnect} from "@/lib/dbConnect"
 
-import dbConnect from "@/lib/dbConnect";
+//import dbConnect from "@/lib/dbConnect";
+
+import { dbConnect } from "@/lib/dbConnect";
+
+
 
 export const POST = async (request) => {
   const {name, email, password} = await request.json();
+
+
+  console.log('user created ')
 
   console.log(name, email, password);
 
@@ -20,7 +29,7 @@ export const POST = async (request) => {
   // Form a DB payload
   const newUser = {
     name,
-    password: hashedPassword,
+    password,
     email
   }
   // Update the DB
@@ -34,6 +43,7 @@ export const POST = async (request) => {
 
   return new NextResponse("User has been created", {
     status: 201,
+   
   });
 
  }
