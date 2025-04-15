@@ -25,8 +25,6 @@ export const POST = async (request) => {
     name,
     password:hashedPassword,
     email,
- 
- 
   }
   // Update the DB
   try {
