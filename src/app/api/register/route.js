@@ -29,7 +29,7 @@ export const POST = async (request) => {
   // Form a DB payload
   const newUser = {
     name,
-    password,
+    password:hashedPassword,
     email
   }
   // Update the DB
