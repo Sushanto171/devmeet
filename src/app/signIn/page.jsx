@@ -28,6 +28,7 @@ const page = () => {
             console.error(response.error);
             setError(response.error.message);
         } else {
+            router.refresh();
             router.push("/about"); // temporary route 
         }
     } catch (e) {
