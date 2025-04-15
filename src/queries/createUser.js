@@ -9,6 +9,8 @@ export async function createUser(user) {
       user.role = "user";
     }
     await User.create(user);
+    console.log('user from quires');
+    console.log(user);
   } catch (e) {
     throw new Error(e);
   }
