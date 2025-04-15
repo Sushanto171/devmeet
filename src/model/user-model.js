@@ -12,11 +12,13 @@ const userSchema = new Schema({
   email: {
     required: true,
     type: String,
+    unique: true,
   },
-  // role: {
-  //   required: true,
-  //   type: String,
-  // },
+  role: {
+    type: String,
+    enum: ["user", "admin"],
+    default: "user", // 👈 this sets default role
+  },
 });
 
 export const User = mongoose.models.User ?? mongoose.model("User", userSchema);

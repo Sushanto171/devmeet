@@ -12,6 +12,7 @@ import { signIn } from "next-auth/react"; // ✅ Import signIn
 import { doCredentialLogin } from "../actions";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Router from "next/router";
 
 const page = () => {
   const router = useRouter();
@@ -28,9 +29,20 @@ const page = () => {
             console.error(response.error);
             setError(response.error.message);
         } else {
-            router.refresh();
-            router.push("/about"); // temporary route 
+
+// before redirecting to the profile , im awaiting for the session to get updated then pushing to the profile page 
+          await signIn("credentials", {
+            redirect: false,
+            email: formData.get("email"),
+            password: formData.get("password"),
+          });
+    
+          router.push("/community");
+            // router.push("/dashboard/profile"); // temporary route 
+            // router.refresh();
         }
+
+
     } catch (e) {
         console.error(e);
         setError("Check your Credentials");

@@ -1,14 +1,8 @@
 import { NextResponse } from "next/server";
-//import { createUser } from "@/queries/users";
 
 import { createUser } from "@/queries/createUser";
 
 import bcrypt from "bcryptjs";
-
-
-//import {dbConnect} from "@/lib/dbConnect"
-
-//import dbConnect from "@/lib/dbConnect";
 
 import { dbConnect } from "@/lib/dbConnect";
 
@@ -30,7 +24,9 @@ export const POST = async (request) => {
   const newUser = {
     name,
     password:hashedPassword,
-    email
+    email,
+ 
+ 
   }
   // Update the DB
   try {
