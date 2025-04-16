@@ -109,6 +109,12 @@ const page = () => {
   <div className="text-red-500">{error}</div>
 </form>
 
+<div className="text-center text-sm mt-2">
+    <Link href="/forgot-password" className="text-primary hover:underline"> {/* ✅ added */}
+      Forgot Password?
+    </Link>
+  </div>
+
 
         <p className="text-sm mt-5 text-center">
           {"Don't have an account? "}
