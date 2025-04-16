@@ -6,6 +6,9 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import { getUserByEmail } from "@/queries/getUser";
 import bcrypt from 'bcryptjs';  // Ensure you're using bcryptjs for promises
 
+import { User } from "@/model/user-model";
+import { createUser } from "@/queries/createUser";
+
 
 export const {
     handlers: { GET, POST },
@@ -34,7 +37,7 @@ export const {
                         throw new Error("User not found");
                     }
             
-                    const isMatch =  bcrypt.compare(credentials.password, user.password); // ✅ hash comparison
+                    const isMatch = await bcrypt.compare(credentials.password, user.password); // ✅ hash comparison
                     if (!isMatch) {
                         throw new Error("Email or Password is not correct");
                     }
@@ -63,5 +66,32 @@ export const {
 
        
     ],
+
+    callbacks: {
+        async signIn({ user, account, profile }) {
+          if (account.provider === "google") {
+            const existingUser = await getUserByEmail(profile.email);
+      
+            if (!existingUser) {
+              // generate a dummy password
+              const hashedPassword = await bcrypt.hash(
+                Math.random().toString(36).slice(-8),
+                10
+              );
+      
+              await createUser({
+                name: profile.name,
+                email: profile.email,
+                password: hashedPassword,
+                role: "user", // default role or whatever logic you want
+              });
+      
+              console.log("✅ Google user created in DB");
+            }
+          }
+      
+          return true;
+        },
+      },
 
 });
