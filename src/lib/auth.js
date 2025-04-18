@@ -83,7 +83,7 @@ export const {
                 name: profile.name,
                 email: profile.email,
                 password: hashedPassword,
-                role: "user", // default role or whatever logic you want
+                role: "user", // default role 
               });
       
               console.log("✅ Google user created in DB");
