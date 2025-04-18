@@ -25,12 +25,11 @@ const page = () => {
 
         {/* Google Sign-In Button */}
         <div
-  onClick={() => doSocialLogin("google", { callbackUrl: "/" })} // ✅ Redirects to home
-  className="rounded-full border flex gap-2 items-center justify-center p-2 cursor-pointer mb-3"
->
-  <FcGoogle /> Google
-</div>
-
+          onClick={() => doSocialLogin("google", { callbackUrl: "/" })} // ✅ Redirects to home
+          className="rounded-full border flex gap-2 items-center justify-center p-2 cursor-pointer mb-3"
+        >
+          <FcGoogle /> Google
+        </div>
 
         {/* Github placeholder (unchanged for now) */}
         <div className="rounded-full border flex gap-2 items-center justify-center p-2 cursor-pointer mb-2">

@@ -14,6 +14,8 @@ import {
   SidebarTrigger,
 } from "@/components/ui/sidebar";
 import Link from "next/link";
+// import "quill/dist/quill.snow.css";
+
 const layout = ({ children }) => {
   return (
     <>
@@ -47,7 +49,7 @@ const layout = ({ children }) => {
               </div>
               <div className="bg-muted/50 min-h-[100vh] flex-1 rounded-xl md:min-h-min" />
             </div> */}
-          <main className="bg-gray-100 w-full h-full ">{children}</main>;
+          <main className="bg-gray-100 w-full h-full ">{children}</main>
         </SidebarInset>
       </SidebarProvider>
     </>

@@ -5,6 +5,7 @@ import "@/styles/globals.css";
 import { Geist, Geist_Mono } from "next/font/google";
 
 import { SessionProvider } from "next-auth/react";
+import { Toaster } from "react-hot-toast";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -38,18 +39,17 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
-
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-       <SessionProvider> 
-        <ThemeProvider>
-        <Navbar></Navbar>
-        <div className="min-h-[400px]">{children}</div> 
-        <Footer></Footer>
-        </ThemeProvider> 
-       </SessionProvider>
-    
+        <SessionProvider>
+          <ThemeProvider>
+            <Navbar></Navbar>
+            <div className="min-h-[400px]">{children}</div>
+            <Footer></Footer>
+            <Toaster position="top-center" />
+          </ThemeProvider>
+        </SessionProvider>
       </body>
     </html>
   );
