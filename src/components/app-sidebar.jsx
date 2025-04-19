@@ -28,6 +28,7 @@ import {
   SidebarMenuSubItem,
   SidebarRail,
 } from "@/components/ui/sidebar";
+import Link from "next/link";
 
 // This is sample data.
 const data = {
@@ -101,7 +102,7 @@ export function AppSidebar({ ...props }) {
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton size="lg" asChild>
-              <a href="#">
+              <Link href="/">
                 <div className="flex justify-between gap-5 items-center  leading-none">
                   <h3 className="text-2xl font-semibold text-primary ">
                     Dev
@@ -109,7 +110,7 @@ export function AppSidebar({ ...props }) {
                   </h3>
                   <span className="text-sm">v1.0.0</span>
                 </div>
-              </a>
+              </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
