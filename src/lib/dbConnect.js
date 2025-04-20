@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-export async function dbConnect() {
+const dbConnect = async () =>{
   try {
     let conn = await mongoose.connect(String(process.env.MONGO_DB_CONNECTION_STRING));
     //console.log(conn)
@@ -10,3 +10,5 @@ export async function dbConnect() {
     throw new Error(e);
   }
 }
+
+export default dbConnect

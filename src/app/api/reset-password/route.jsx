@@ -2,12 +2,12 @@ import { NextResponse } from "next/server";
 import { User } from "@/model/user-model";
 import bcrypt from "bcryptjs";
 import { PasswordResetToken } from "@/model/password-reset-token-model";
-import { connectDB } from '@/lib/dbConnect';
+import dbConnect from "@/lib/dbConnect";
 
 
 export async function POST(req) {
   try {
-    await connectDB();
+    await dbConnect();
     const { email, token, password } = await req.json();
 
     const resetEntry = await PasswordResetToken.findOne({ email, token });

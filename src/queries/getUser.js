@@ -1,4 +1,4 @@
-import { dbConnect } from "@/lib/dbConnect";
+import dbConnect from "@/lib/dbConnect";
 import { User } from "@/model/user-model";
 
 export const getUserByEmail = async (email) => {
