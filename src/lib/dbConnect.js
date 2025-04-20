@@ -6,6 +6,7 @@ export async function dbConnect() {
     //console.log(conn)
     return conn;
   } catch (e) {
+    console.log("Mongo error", e);
     throw new Error(e);
   }
 }
