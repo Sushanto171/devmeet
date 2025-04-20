@@ -1,15 +1,10 @@
 import { NextResponse } from "next/server";
-import { dbConnect  } from "@/lib/dbConnect"; // your mongoose connection
-
 import { User } from "@/model/user-model";
 import crypto from "crypto";
-
-//import { PasswordResetToken } from "@/model/password-reset-token-model";
 import { PasswordResetToken } from "@/model/password-reset-token-model";
-
-
 // ✅ Added Resend import
 import { Resend } from 'resend';
+import dbConnect from "@/lib/dbConnect";
 
 export async function POST(req) {
   try {

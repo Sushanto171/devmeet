@@ -3,8 +3,7 @@ import { NextResponse } from "next/server";
 import { createUser } from "@/queries/createUser";
 
 import bcrypt from "bcryptjs";
-
-import { dbConnect } from "@/lib/dbConnect";
+import dbConnect from "@/lib/dbConnect";
 
 
 
