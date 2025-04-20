@@ -33,7 +33,7 @@ const menuItems = [
 
 const LeftContent = () => {
     return (
-        <aside className="max-w-[250px] ">
+        <aside className="max-w-[250px]">
             <nav className="space-y-2">
                 {menuItems.map(({ icon, label }, idx) => (
                     <button
