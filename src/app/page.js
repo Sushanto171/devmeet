@@ -1,10 +1,8 @@
 import Container from "@/components/Container";
-import Banner from "@/components/Home/Banner";
-import LeftContent from "@/components/Home/LeftContent";
-import QuestionCard from "@/components/Home/QuestionCard";
-import RightContent from "@/components/Home/RightContent";
-import Statistics from "@/components/Home/Statistics";
-
+import Banner from "@/components/home/Banner";
+import LeftContent from "@/components/home/LeftContent";
+import QuestionCard from "@/components/home/QuestionCard";
+import RightContent from "@/components/home/RightContent";
 
 export default function Home() {
     return (
