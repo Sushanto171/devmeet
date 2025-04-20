@@ -1,8 +1,9 @@
 import { NextResponse } from "next/server";
-import  connectDB  from "@/lib/dbConnect";
 import { User } from "@/model/user-model";
-import PasswordResetToken  from "@/model/password-reset-token-model";
 import bcrypt from "bcryptjs";
+import { PasswordResetToken } from "@/model/password-reset-token-model";
+import { connectDB } from '@/lib/dbConnect';
+
 
 export async function POST(req) {
   try {

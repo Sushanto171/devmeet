@@ -1,11 +1,11 @@
 "use client";
 
+import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { RxHamburgerMenu } from "react-icons/rx";
 import ThemeToggle from "./ThemeToggle";
-import { useSession, signIn, signOut } from "next-auth/react";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -77,8 +77,13 @@ const Navbar = () => {
 
           <ul className="lg:flex items-center gap-4 hidden">
             {routes.map((route) => (
-              <li key={route.path}>
-                <Link href={route.path} className="text-gray-800">
+              <li
+                key={route.path}
+                className={
+                  route.path === "/dashboard" && !session?.user?.email ? "hidden" : ""
+                }
+              >
+                <Link href={route.path} className={ path === route.path ? "text-primary underline":"text-gray-800"}>
                   {route.name}
                 </Link>
               </li>
@@ -95,9 +100,7 @@ const Navbar = () => {
                 <button
                   onClick={() => signOut()}
                   className={`border py-1 px-3 font-semibold text-gray-800 rounded-full cursor-pointer ${
-                    path === "/about"
-                      ? "border-gray-200/35"
-                      : "border-gray-200"
+                    path === "/about" ? "border-gray-200/35" : "border-gray-200"
                   }`}
                 >
                   Sign out
@@ -105,15 +108,13 @@ const Navbar = () => {
               </>
             ) : (
               <Link
-              href="/signIn"
-              className={`border py-1 px-3 font-semibold text-gray-800 rounded-full cursor-pointer ${
-                path === "/about" ? "border-gray-200/35" : "border-gray-200"
-              }`}
-            >
-              Sign in
-            </Link>
-            
-            
+                href="/signIn"
+                className={`border py-1 px-3 font-semibold text-gray-800 rounded-full cursor-pointer ${
+                  path === "/about" ? "border-gray-200/35" : "border-gray-200"
+                }`}
+              >
+                Sign in
+              </Link>
             )}
           </div>
         </div>
