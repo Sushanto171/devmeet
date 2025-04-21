@@ -1,21 +1,39 @@
 "use client";
 
-import { useSearchParams, useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 export default function ResetPassword() {
-  const params = useSearchParams();
   const router = useRouter();
+  const { data: session, status } = useSession();
 
-  const email = params.get("email");
-  const token = params.get("token");
+  const email = session?.user?.email;
+  const token = session?.user?.token;
 
   const [password, setPassword] = useState("");
   const [success, setSuccess] = useState("");
   const [error, setError] = useState("");
 
+  if (status === "loading") {
+    return <p className="text-center">Loading...</p>;
+  }
+
+  if (!session) {
+    return (
+      <p className="text-center text-red-500">
+        Please login to reset password.
+      </p>
+    );
+  }
+
   async function handleSubmit(e) {
     e.preventDefault();
+
+    if (!email || !token) {
+      setError("Missing session information.");
+      return;
+    }
 
     const res = await fetch("/api/reset-password", {
       method: "POST",
