@@ -39,7 +39,7 @@ const Navbar = () => {
     return (
       <div
         className={`my-4 ${
-          path === "/about" ? "fixed w-full z-20 top-0 " : "sticky top-4"
+          path === "/about" ? "fixed w-full z-50 top-0 " : "sticky top-4"
         }`}
       >
         <div
