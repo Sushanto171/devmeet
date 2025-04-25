@@ -4,10 +4,14 @@ import LeftContent from "@/components/Home/LeftContent";
 import QuestionCard from "@/components/Home/QuestionCard";
 import RightContent from "@/components/Home/RightContent";
 import { auth } from "@/lib/auth";
+export const getUsers = async () => {
+  const data = await fetch("http:localhost:3000/api/users");
+    const users = await data.json()
+    return users
+};
 
 export default async function Home() {
   const session = await auth();
-
   return (
     <Container>
       <Banner user={session?.user} />
