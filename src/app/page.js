@@ -5,7 +5,7 @@ import QuestionCard from "@/components/Home/QuestionCard";
 import RightContent from "@/components/Home/RightContent";
 import { auth } from "@/lib/auth";
 export const getUsers = async () => {
-  const data = await fetch("http:localhost:3000/api/users");
+  const data = await fetch(`${process.env.NEXTAUTH_URL}/api/users`);
     const users = await data.json()
     return users
 };
