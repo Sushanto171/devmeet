@@ -5,6 +5,7 @@ import "@/styles/globals.css";
 import { Geist, Geist_Mono } from "next/font/google";
 
 import { SessionProvider } from "next-auth/react";
+import { auth } from "@/lib/auth";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -35,7 +36,9 @@ export const metadata = {
   ],
 };
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+  const session = await auth();
+  
   return (
     <html lang="en" suppressHydrationWarning>
 
@@ -44,7 +47,7 @@ export default function RootLayout({ children }) {
       >
        <SessionProvider> 
         <ThemeProvider>
-        <Navbar></Navbar>
+        <Navbar user={session?.user}></Navbar>
         <div className="min-h-[400px]">{children}</div> 
         <Footer></Footer>
         </ThemeProvider> 

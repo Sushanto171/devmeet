@@ -6,12 +6,12 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { RxHamburgerMenu } from "react-icons/rx";
 import ThemeToggle from "./ThemeToggle";
+import { Loader } from "lucide-react";
 
-const Navbar = () => {
+const Navbar = ({ user }) => {
   const [open, setOpen] = useState(false);
-  const pathname = usePathname();
   const path = usePathname();
-  const { data: session } = useSession();
+  const session = useSession();
 
   const routes = [
     { name: "Home", path: "/" },
@@ -35,7 +35,17 @@ const Navbar = () => {
     };
   }, []);
 
-  if (!pathname.includes("dashboard")) {
+  if (session.status === "loading") {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <span className="animate-spin">
+          <Loader />
+        </span>
+      </div>
+    );
+  }
+
+  if (!path.includes("dashboard")) {
     return (
       <div
         className={`my-4 ${
@@ -80,10 +90,19 @@ const Navbar = () => {
               <li
                 key={route.path}
                 className={
-                  route.path === "/dashboard" && !session?.user?.email ? "hidden" : ""
+                  route.path === "/dashboard" && !session?.data?.user
+                    ? "hidden"
+                    : ""
                 }
               >
-                <Link href={route.path} className={ path === route.path ? "text-primary underline":"text-gray-800"}>
+                <Link
+                  href={route.path}
+                  className={
+                    path === route.path
+                      ? "text-primary underline"
+                      : "text-gray-800"
+                  }
+                >
                   {route.name}
                 </Link>
               </li>
@@ -92,10 +111,10 @@ const Navbar = () => {
 
           <div className="flex gap-2 items-center">
             <ThemeToggle />
-            {session ? (
+            {user ? (
               <>
                 <span className="text-sm text-gray-700 hidden md:block">
-                  {session.user?.email}
+                  {user?.email}
                 </span>
                 <button
                   onClick={() => signOut()}
