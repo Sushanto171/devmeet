@@ -1,4 +1,10 @@
+import dbConnect from "@/lib/dbConnect";
+import { User } from "@/model/user-model";
 import { NextResponse } from "next/server";
-export default function GET() {
-  NextResponse.json("Fetched all users");
+export async function GET() {
+  // db connection
+  await dbConnect();
+
+  const users = await User.find();
+  return NextResponse.json(users);
 }

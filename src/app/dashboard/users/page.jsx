@@ -1,3 +1,4 @@
+import { getUsers } from "@/app/page";
 import { Input } from "@/components/ui/input";
 import {
   Table,
@@ -10,7 +11,7 @@ import {
 import { FaTrash } from "react-icons/fa6";
 
 const page = async () => {
-
+  const users = await getUsers()
   return (
     <div className="p-5 ">
       <div className="p-5 bg-white shadow-md rounded-md border">
@@ -33,6 +34,9 @@ const page = async () => {
             </TableRow>
           </TableHeader>
           <TableBody>
+
+            {
+              users.map((user)=>(
             <TableRow>
               <TableCell className="font-medium">
                 <div className="flex  items-center gap-2">
@@ -42,117 +46,24 @@ const page = async () => {
                     alt="profile"
                   />
                   <div>
-                    <h3 className="text-lg">Rakib Hossen</h3>
+                    <h3 className="text-lg">{user.name}</h3>
 
                     <p className="text-sm text-gray-600">
-                      hellorakibhossen@gmail.com
+                    {user.email}
                     </p>
                   </div>
                 </div>
               </TableCell>
-              <TableCell>Admin</TableCell>
+              <TableCell>{user.role}</TableCell>
               <TableCell>Active</TableCell>
               <TableCell>2 April 2025</TableCell>
               <TableCell className="text-right">
                 <FaTrash></FaTrash>
               </TableCell>
             </TableRow>
-            <TableRow>
-              <TableCell className="font-medium">
-                <div className="flex  items-center gap-2">
-                  <img
-                    className="w-12 h-12 rounded-full border"
-                    src={"https://i.ibb.co.com/JWDd73K0/image.png"}
-                    alt="profile"
-                  />
-                  <div>
-                    <h3 className="text-lg">Rakib Hossen</h3>
+              ))
+            }
 
-                    <p className="text-sm text-gray-600">
-                      hellorakibhossen@gmail.com
-                    </p>
-                  </div>
-                </div>
-              </TableCell>
-              <TableCell>Admin</TableCell>
-              <TableCell>Active</TableCell>
-              <TableCell>2 April 2025</TableCell>
-              <TableCell className="text-right">
-                <FaTrash></FaTrash>
-              </TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell className="font-medium">
-                <div className="flex  items-center gap-2">
-                  <img
-                    className="w-12 h-12 rounded-full border"
-                    src={"https://i.ibb.co.com/JWDd73K0/image.png"}
-                    alt="profile"
-                  />
-                  <div>
-                    <h3 className="text-lg">Rakib Hossen</h3>
-
-                    <p className="text-sm text-gray-600">
-                      hellorakibhossen@gmail.com
-                    </p>
-                  </div>
-                </div>
-              </TableCell>
-              <TableCell>Admin</TableCell>
-              <TableCell>Active</TableCell>
-              <TableCell>2 April 2025</TableCell>
-              <TableCell className="text-right">
-                <FaTrash></FaTrash>
-              </TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell className="font-medium">
-                <div className="flex  items-center gap-2">
-                  <img
-                    className="w-12 h-12 rounded-full border"
-                    src={"https://i.ibb.co.com/JWDd73K0/image.png"}
-                    alt="profile"
-                  />
-                  <div>
-                    <h3 className="text-lg">Rakib Hossen</h3>
-
-                    <p className="text-sm text-gray-600">
-                      hellorakibhossen@gmail.com
-                    </p>
-                  </div>
-                </div>
-              </TableCell>
-              <TableCell>Admin</TableCell>
-              <TableCell>Active</TableCell>
-              <TableCell>2 April 2025</TableCell>
-              <TableCell className="text-right">
-                <FaTrash></FaTrash>
-              </TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell className="font-medium">
-                <div className="flex  items-center gap-2">
-                  <img
-                    className="w-12 h-12 rounded-full border"
-                    src={"https://i.ibb.co.com/JWDd73K0/image.png"}
-                    alt="profile"
-                  />
-                  <div>
-                    <h3 className="text-lg">Rakib Hossen</h3>
-
-                    <p className="text-sm text-gray-600">
-                      hellorakibhossen@gmail.com
-                    </p>
-                  </div>
-                </div>
-              </TableCell>
-              <TableCell>Admin</TableCell>
-              <TableCell>Active</TableCell>
-              <TableCell>2 April 2025</TableCell>
-              <TableCell className="text-right">
-                <FaTrash></FaTrash>
-              </TableCell>
-            </TableRow>
           </TableBody>
         </Table>
       </div>
