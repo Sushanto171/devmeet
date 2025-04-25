@@ -9,7 +9,8 @@ import {
 } from "@/components/ui/table";
 import { FaTrash } from "react-icons/fa6";
 
-const page = () => {
+const page = async () => {
+
   return (
     <div className="p-5 ">
       <div className="p-5 bg-white shadow-md rounded-md border">
