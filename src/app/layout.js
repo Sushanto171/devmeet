@@ -36,7 +36,9 @@ export const metadata = {
   ],
 };
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+  const session = await auth();
+  
   return (
     <html lang="en" suppressHydrationWarning>
       <body

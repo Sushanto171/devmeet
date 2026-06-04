@@ -1,7 +1,3 @@
-import { Activity, BookOpen, Users } from "lucide-react";
-import Link from "next/link";
-import React from "react";
-import { MdChatBubble } from "react-icons/md";
 import {
   Table,
   TableBody,
@@ -10,8 +6,13 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { Activity, BookOpen, Users } from "lucide-react";
+import Link from "next/link";
+import { MdChatBubble } from "react-icons/md";
+import { getUsers } from "../page";
 import Chart from "./components/Chart";
-const page = () => {
+const page = async () => {
+  const users = await getUsers();
   return (
     <div className="p-5">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 md:gap-0 gap-5">
@@ -35,7 +36,7 @@ const page = () => {
             <div className="space-y-2">
               <p className="text-sm">Total Users</p>
 
-              <h3 className="text-xl font-bold">50</h3>
+              <h3 className="text-xl font-bold">{users.length}</h3>
               <p className="text-sm text-gray-600 hover:underline">
                 <Link href="/">View all user</Link>
               </p>
@@ -93,30 +94,20 @@ const page = () => {
               </TableRow>
             </TableHeader>
             <TableBody>
+              {
+                users.map((user)=>(
+
               <TableRow>
-                <TableCell className="font-medium">Reaz </TableCell>
-                <TableCell>reaz@gmail.com</TableCell>
-                <TableCell className="text-right">Developer</TableCell>
+                <TableCell className="font-medium">{user.name} </TableCell>
+                <TableCell>{user.email}</TableCell>
+                <TableCell className="text-right">{user.role}</TableCell>
                 <TableCell>20 Feb 2025</TableCell>
               </TableRow>
-              <TableRow>
-                <TableCell className="font-medium">Reaz </TableCell>
-                <TableCell>reaz@gmail.com</TableCell>
-                <TableCell className="text-right">Developer</TableCell>
-                <TableCell>20 Feb 2025</TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell className="font-medium">Miftahul </TableCell>
-                <TableCell>Miftahul@gmail.com</TableCell>
-                <TableCell className="text-right">Developer</TableCell>
-                <TableCell>20 Feb 2025</TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell className="font-medium">Miftahul </TableCell>
-                <TableCell>Miftahul@gmail.com</TableCell>
-                <TableCell className="text-right">Developer</TableCell>
-                <TableCell>20 Feb 2025</TableCell>
-              </TableRow>
+
+
+                ))
+
+              }
             </TableBody>
           </Table>
         </div>

@@ -1,17 +1,17 @@
 "use client";
 
+import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { RxHamburgerMenu } from "react-icons/rx";
 import ThemeToggle from "./ThemeToggle";
-import { useSession, signIn, signOut } from "next-auth/react";
+import { Loader } from "lucide-react";
 
-const Navbar = () => {
+const Navbar = ({ user }) => {
   const [open, setOpen] = useState(false);
-  const pathname = usePathname();
   const path = usePathname();
-  const { data: session } = useSession();
+  const session = useSession();
 
   const routes = [
     { name: "Home", path: "/" },
@@ -35,11 +35,21 @@ const Navbar = () => {
     };
   }, []);
 
-  if (!pathname.includes("dashboard")) {
+  if (session.status === "loading") {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <span className="animate-spin">
+          <Loader />
+        </span>
+      </div>
+    );
+  }
+
+  if (!path.includes("dashboard")) {
     return (
       <div
         className={`my-4 ${
-          path === "/about" ? "fixed w-full z-20 top-0 " : "sticky top-4"
+          path === "/about" ? "fixed w-full z-50 top-0 " : "sticky top-4"
         }`}
       >
         <div
@@ -77,8 +87,22 @@ const Navbar = () => {
 
           <ul className="lg:flex items-center gap-4 hidden">
             {routes.map((route) => (
-              <li key={route.path}>
-                <Link href={route.path} className="text-gray-800">
+              <li
+                key={route.path}
+                className={
+                  route.path === "/dashboard" && !session?.data?.user
+                    ? "hidden"
+                    : ""
+                }
+              >
+                <Link
+                  href={route.path}
+                  className={
+                    path === route.path
+                      ? "text-primary underline"
+                      : "text-gray-800"
+                  }
+                >
                   {route.name}
                 </Link>
               </li>
@@ -87,33 +111,29 @@ const Navbar = () => {
 
           <div className="flex gap-2 items-center">
             <ThemeToggle />
-            {session ? (
+            {user ? (
               <>
                 <span className="text-sm text-gray-700 hidden md:block">
-                  {session.user?.email}
+                  {user?.email}
                 </span>
                 <button
                   onClick={() => signOut()}
                   className={`border py-1 px-3 font-semibold text-gray-800 rounded-full cursor-pointer ${
-                    path === "/about"
-                      ? "border-gray-200/35"
-                      : "border-gray-200"
+                    path === "/about" ? "border-gray-200/35" : "border-gray-200"
                   }`}
                 >
                   Sign out
                 </button>
               </>
             ) : (
-              <button
-                onClick={() => signIn()}
+              <Link
+                href="/signIn"
                 className={`border py-1 px-3 font-semibold text-gray-800 rounded-full cursor-pointer ${
-                  path === "/about"
-                    ? "border-gray-200/35"
-                    : "border-gray-200"
+                  path === "/about" ? "border-gray-200/35" : "border-gray-200"
                 }`}
               >
                 Sign in
-              </button>
+              </Link>
             )}
           </div>
         </div>

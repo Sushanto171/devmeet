@@ -34,7 +34,7 @@ const contributors = [
     name: "Miftahul Jannat",
     image: "https://avatars.githubusercontent.com/u/112188695?v=4",
     role: "Backend Developer, Frontend Developer",
-    github: "https://github.com/miftah-mj",
+    github: "https://github.com/Mifta-hul-Jannat",
     linkedin: "https://www.linkedin.com/in/miftahuljannat-mj",
   },
 ];

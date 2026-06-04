@@ -9,8 +9,46 @@ import Link from "next/link";
 import { FaGithub } from "react-icons/fa6";
 import { FcGoogle } from "react-icons/fc";
 import { signIn } from "next-auth/react"; // ✅ Import signIn
+import { doCredentialLogin } from "../actions";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import Router from "next/router";
 
 const page = () => {
+  const router = useRouter();
+  const [error, setError] = useState("");
+
+  async function onSubmit(event) {
+    event.preventDefault();
+    try {
+        const formData = new FormData(event.currentTarget);
+
+        const response = await doCredentialLogin(formData);
+
+        if (!!response.error) {
+            console.error(response.error);
+            setError(response.error.message);
+        } else {
+
+// before redirecting to the profile , im awaiting for the session to get updated then pushing to the profile page 
+          await signIn("credentials", {
+            redirect: false,
+            email: formData.get("email"),
+            password: formData.get("password"),
+          });
+    
+          router.push("/community");
+            // router.push("/dashboard/profile"); // temporary route 
+            // router.refresh();
+        }
+
+
+    } catch (e) {
+        console.error(e);
+        setError("Check your Credentials");
+    }
+}
+
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
       <div className="w-11/12 mx-auto max-w-[400px] bg-white p-6 rounded-2xl border">
@@ -42,34 +80,40 @@ const page = () => {
           <hr className="flex-grow border-t border-gray-300" />
         </div>
 
-        <form>
-          <div className="mb-4">
-            <Label htmlFor="email" className=" mb-2">
-              Email
-            </Label>
-            <Input
-              type="email"
-              className="rounded-full p-5"
-              id="email"
-              placeholder="Email"
-            />
-          </div>
-          <div className="mb-4">
-            <Label htmlFor="password" className=" mb-2">
-              Password
-            </Label>
-            <Input
-              type="password"
-              className="rounded-full p-5"
-              id="password"
-              placeholder="Password"
-            />
-          </div>
+        <form onSubmit={onSubmit}>
+  <div className="mb-4">
+    <Label htmlFor="email" className="mb-2">Email</Label>
+    <Input
+      type="email"
+      className="rounded-full p-5"
+      id="email"
+      placeholder="Email"
+      name='email'
+    />
+  </div>
+  <div className="mb-4">
+    <Label htmlFor="password" className="mb-2">Password</Label>
+    <Input
+      type="password"
+      className="rounded-full p-5"
+      id="password"
+      placeholder="Password"
+      name='password'
+    />
+  </div>
 
-          <Button className="w-full rounded-full py-5 bg-primary hover:bg-black cursor-pointer">
-            Sign In
-          </Button>
-        </form>
+  <button type="submit" className="w-full rounded-full py-5 bg-primary hover:bg-black cursor-pointer text-white">
+    Credential Login
+  </button>
+  <div className="text-red-500">{error}</div>
+</form>
+
+<div className="text-center text-sm mt-2">
+    <Link href="/forgot-password" className="text-primary hover:underline"> {/* ✅ added */}
+      Forgot Password?
+    </Link>
+  </div>
+
 
         <p className="text-sm mt-5 text-center">
           {"Don't have an account? "}
@@ -78,6 +122,8 @@ const page = () => {
           </Link>
         </p>
       </div>
+
+
     </div>
   );
 };
