@@ -1,49 +1,95 @@
+
 import Container from "@/components/Container";
 import Banner from "@/components/Home/Banner";
-import LeftContent from "@/components/Home/LeftContent";
-import QuestionCard from "@/components/Home/QuestionCard";
+import ServiceCard from "@/components/Home/ServiceCard";
 import RightContent from "@/components/Home/RightContent";
-import Statistics from "@/components/Home/Statistics";
 
+const services = [
+    {
+        id: 1,
+        image: "/images/web-development.jpg",
+        service: "Web Development",
+        description:
+            "We build modern, responsive, and scalable websites tailored to your business needs.",
+    },
+    {
+        id: 2,
+        image: "/images/app-development.jpg",
+        service: "App Development",
+        description:
+            "We develop powerful and user-friendly mobile applications for iOS and Android.",
+    },
+    {
+        id: 3,
+        image: "/images/cloud-services.jpg",
+        service: "Cloud Services",
+        description:
+            "We provide secure and scalable cloud solutions for your business.",
+    },
+    {
+        id: 4,
+        image: "/images/cyber-security.jpg",
+        service: "Cyber Security",
+        description:
+            "We help protect your systems, applications, and business data.",
+    },
+    {
+        id: 5,
+        image: "/images/ui-ux.jpg",
+        service: "UI/UX Design",
+        description:
+            "We create clean and user-friendly interfaces for web and mobile applications.",
+    },
+    {
+        id: 6,
+        image: "/images/software-development.jpg",
+        service: "Software Development",
+        description:
+            "We develop custom software solutions based on your business requirements.",
+    },
+    {
+        id: 7,
+        image: "/images/it-support.jpg",
+        service: "IT Support",
+        description:
+            "We provide reliable technical support and maintenance for your IT systems.",
+    },
+    {
+        id: 8,
+        image: "/images/data-analytics.jpg",
+        service: "Data Analytics",
+        description:
+            "We turn your business data into useful insights and reports.",
+    },
+];
 
 export default function Home() {
     return (
         <Container>
             <Banner />
 
-            {/* main content */}
-            <main className="grid md:grid-cols-12 gap-6">
-                <aside className="col-span-3">
-                    <LeftContent />
-                </aside>
-                <section className="col-span-6">
-                    <QuestionCard
-                        user="Sophie Taylor"
-                        date="January 4, 2023"
-                        category="Comic Books"
-                        title="What five Marvel characters do you choose to ensure your safety?"
-                        description="The entire DC Universe is out to assassinate you. What five Marvel characters do you choose to ensure your safety and why?"
-                        tags={["Comic", "Dc"]}
-                        likes={194}
-                        comments={1}
-                        views={11000}
-                    />
-                    <QuestionCard
-                        user="Sophie Taylor"
-                        date="January 12, 2023"
-                        category="Education"
-                        title="Would it be possible to give a human artificial gills?"
-                        description="Would it be possible to give a human artificial gills, capable of allowing humans to breathe underwater (with no outside source of oxygen except from H2O)?"
-                        tags={["Education", "Science"]}
-                        likes={90}
-                        comments={2}
-                        views={6000}
-                    />
+            {/* Main Content */}
+            <main className="grid grid-cols-12 gap-6">
+                {/* Services */}
+                <section className="col-span-12 lg:col-span-9">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                        {services.map((service) => (
+                            <ServiceCard
+                                key={service.id}
+                                image={service.image}
+                                service={service.service}
+                                description={service.description}
+                            />
+                        ))}
+                    </div>
                 </section>
-                <aside className="col-span-3">
+
+                {/* Right Sidebar */}
+                <aside className="col-span-12 lg:col-span-3">
                     <RightContent />
                 </aside>
             </main>
         </Container>
     );
 }
+
